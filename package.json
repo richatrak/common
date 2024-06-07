@@ -1,6 +1,6 @@
 {
   "name": "@richatrak/common",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Common Typescript Library",
   "homepage": "https://github.com/richatrak/common#readme",
   "bugs": {
@@ -33,13 +33,12 @@
     "check": "npm run lint && tsc --noEmit",
     "---------- Version ----------": "",
     "preversion": "npm run lint && npm run changelog && node gitCommitMsg.js && git add HISTORY.log",
-    "version": "npm run doc && git add -A apidoc && git add -A src && git add -A package-lock.json",
+    "version": "git add -A src && git add -A package-lock.json",
     "postversion": "git push && git push --tags",
     "---------- UTILITIES ----------": "",
     "outdate": "npm outdated",
     "quickRelease": "npm version patch && npm publish",
     "lint": "npx eslint src/**/*.ts",
-    "doc": "",
     "changelog": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "===== Commit -> Version -> Build -> Publish =====": ""
   },
@@ -68,11 +67,4 @@
   "publishConfig": {
     "@richatrak:registry": "https://npm.pkg.github.com"
   },
-  "apidoc": {
-    "template": {
-      "forceLanguage": "en",
-      "showRequiredLabels": true,
-      "withGenerator": false
-    }
-  }
 }
