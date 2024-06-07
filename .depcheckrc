@@ -1,1 +1,1 @@
-ignores: ["@types/express","express","commitizen"]
+ignores: ["@types/express","express"]

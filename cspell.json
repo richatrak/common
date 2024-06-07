@@ -1,0 +1,8 @@
+{
+  "ignorePaths": [
+    "package.json"
+  ],
+  "words": [
+    "TOTP"
+  ]
+}

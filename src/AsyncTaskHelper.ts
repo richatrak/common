@@ -1,8 +1,9 @@
 /* Copyright (C) 2024 by Rich Hsu, All Rights Reserved. */
 
 
-import { AnyType, isNullLike, OneOrManyOrNull, OrNull, OrNullCallback } from './extension/Extension.type';
+import { AnyType, OneOrManyOrNull, OrNull, OrNullCallback } from './extension/Extension.type';
 import * as Library from './Library';
+
 
 const _AsyncPoolChunkSize = 30 ;
 
@@ -113,7 +114,7 @@ export class AsyncTaskHelper {
    */
   public add(asyncTaskList: OneOrManyOrNull<AsyncTaskHelperTask | ( (result?: AsyncTaskHelperResult) => void) >): AsyncTaskHelper {
 
-    if ( ! isNullLike ( asyncTaskList ) ) {
+    if ( ! Library.isNullLike ( asyncTaskList ) ) {
       const availableAsyncTaskList = <AsyncTaskHelperTask[]>(Array.isArray(asyncTaskList) ? asyncTaskList : [asyncTaskList]).map ( (taskCandidate) => {
         switch ( typeof taskCandidate )
         {
@@ -241,7 +242,7 @@ export class AsyncTaskHelper {
 
     asyncTask.asyncTaskFunction( (result: AsyncTaskHelperResult) => {
       this.asyncTaskFinished( asyncTask, result);
-      if ( ! isNullLike ( next ) ) {
+      if ( ! Library.isNullLike ( next ) ) {
         next?.();
       }
     });
@@ -298,7 +299,7 @@ export class AsyncTaskHelper {
       console.debug(this.instanceID, 'All tasks finished');
     }
 
-    if ( ! isNullLike ( this.finalCallback ) ) {
+    if ( ! Library.isNullLike ( this.finalCallback ) ) {
       this.finalCallback?.(this.asyncTaskResultList);
     }
     return this;

@@ -4,7 +4,7 @@ import * as express from 'express';
 import * as fs from 'fs-extra';
 import * as Library from './Library';
 import { Message } from './Message';
-import { AnyType, FreeRecords, Keys, NestedRecords, OneOrManyOrNull, OrNull, PrimitiveType, TypedRecords, isNullLike } from './extension/Extension.type';
+import { AnyType, FreeRecords, Keys, NestedRecords, OneOrManyOrNull, OrNull, PrimitiveType, TypedRecords } from './extension/Extension.type';
 import { HTTP_STATUS_NOT_FOUND, PORT_HTTP } from './extension/GeneralConstant';
 
 const LOG_INDENT = 2 ;
@@ -99,7 +99,7 @@ export function parameterCheck(
   const errorCode = 'Parameter.Check';
   const prefix = errorPrefix ?? '';
   const ruleList = (Array.isArray(ruleOrRuleList) ? ruleOrRuleList : [ruleOrRuleList]).filter(
-    (r) => ! isNullLike ( r )
+    (r) => ! Library.isNullLike ( r )
   ) as RestfulAPIParameterCheckRule[];
 
   if (debugMode) {
@@ -118,7 +118,7 @@ export function parameterCheck(
       return new Message(null, errorCode, `${prefix} No required parameter "${rule.path}"`);
     }
 
-    if (! isNullLike(value)) {
+    if (! Library.isNullLike(value)) {
       const [comingType, targetType] = rule.type.split(':');
 
       if (debugMode) {
@@ -145,7 +145,7 @@ export function parameterCheck(
       rule.isArray = rule.isArray ?? -1 !== checkingType.replace(/ /g, '').indexOf('[]');
       checkingType = checkingType.replace(/ /g, '').replace('[]', '');
 
-      if ( ! isNullLike ( rule.isArray ) ) {
+      if ( ! Library.isNullLike ( rule.isArray ) ) {
         if (debugMode) {
           console.debug(`[Parameter Check] Array (Path: ${rule.path})`, value instanceof Array);
         }
@@ -156,7 +156,7 @@ export function parameterCheck(
 
       if (value instanceof Array) {
         const testee = value?.[0];
-        if (  ( !isNullLike ( testee ) ) && checkingType !== typeof testee) {
+        if (  ( ! Library.isNullLike ( testee ) ) && checkingType !== typeof testee) {
           {
             return new Message(
               null,
@@ -176,7 +176,7 @@ export function parameterCheck(
       }
 
       /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-      if ( (! isNullLike(rule.verify)) && !rule.verify!(value)) {
+      if ( (! Library.isNullLike(rule.verify)) && !rule.verify!(value)) {
         return new Message(null, errorCode, `${prefix} Fail of verification "${rule.path}"`);
       }
     }

@@ -46,7 +46,7 @@ declare global {
      * @param valueFieldName - the name of the field to use as the value
      * @returns a new dictionary object
      */
-    toDictionary: (keyFieldName: string, valueFieldName?: Keys<T>) => TypedRecords<T | AnyType>;
+    toTypedRecords: (keyFieldName: string, valueFieldName?: Keys<T>) => TypedRecords<T | AnyType>;
   }
 }
 
@@ -86,7 +86,7 @@ Array.prototype.split = function <T>(size: number): Array<Array<T>> {
 };
 
 
-Array.prototype.toDictionary = function<T> (keyFieldName: string, valueFieldName?: Keys<T>): TypedRecords<T | T[Keys<T>]> {
+Array.prototype.toTypedRecords = function<T> (keyFieldName: string, valueFieldName?: Keys<T>): TypedRecords<T | T[Keys<T>]> {
 
   return this.reduce((currentRecord: Record<string | number, AnyType>, currentValue: AnyType) => {
     const fieldName =

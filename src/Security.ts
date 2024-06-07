@@ -86,14 +86,14 @@ export function hmac_sha1(key: string, message: Crypto.BinaryLike, format: Crypt
 /**
  * Generates a random code using the specified character set.
  * @param length The length of the code to generate.
- * @param codeBase An array of characters to use as the base for the code. Defaults to 23456789ABCDEFGHJKMNPQRSTUVWXYZ.
+ * @param codeBase An array of characters to use as the base for the code. Defaults to 23456789ABCDEFGHJKMNPQRSTUVWXYZ. // cspell: disable-line
  * @returns A randomly generated code.
  */
 export function getRandomCode(length = CODE_DEFAULT_LENGTH, codeBase?: string[] ): string {
   const output: string[] = [];
 
   if ( ! codeBase ) {
-    codeBase = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'.split('') ; /* cspell: disable-line */
+    codeBase = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'.split('') ; // cspell: disable-line
   }
 
   while (output.length < length) {

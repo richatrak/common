@@ -1,6 +1,7 @@
 /* Copyright (C) 2024 by Rich Hsu, All Rights Reserved. */
 
-import { AnyType, FreeRecords, TypedRecords, isNullLike } from "./extension/Extension.type";
+import { AnyType, FreeRecords, TypedRecords } from "./extension/Extension.type";
+import * as Library from "./Library";
 
 
 
@@ -31,7 +32,7 @@ export function getNormalizeKeyedObject (obj: object, debug = false): AnyType {
 
       let curObj = jsonObject;
       keyNameList.forEach((keyName) => {
-        if ( isNullLike ( curObj[keyName] ) ) {
+        if ( Library.isNullLike ( curObj[keyName] ) ) {
           curObj[keyName] = {};
         }
         curObj = curObj[keyName];
@@ -70,7 +71,7 @@ export function getValueByJSONPath(obj: TypedRecords<unknown>, valuePath: string
 
     if (!pathTail) {
       return subObj;
-    } else if ( ! isNullLike ( subObj ) ) {
+    } else if ( ! Library.isNullLike ( subObj ) ) {
       return getValueByJSONPath(subObj, pathTail, debugMode);
     }
   }

@@ -268,7 +268,7 @@ String.prototype.dictionaryReplace = function ( dictionary: OrNull<TypedRecords<
   }
 
   return Object.keys(dictionary).reduce((currentText, keyword) => {
-    return currentText.replaceAll(leftPattern + keyword + rightPattern, dictionary[keyword]);
+    return currentText.replaceAll(`${leftPattern}${keyword}${rightPattern}`, dictionary[keyword]);
   }, String(this)).toString();
 };
 
@@ -316,7 +316,7 @@ String.prototype.getDetailedAggregatedTagDictionary = function ( separator = ':'
 String.prototype.getTagDictionary = function (options = {}): TypedRecords<string> {
   options = options ?? {};
   const detailedTagArray = String(this).getDetailedTagArray(options.separator, options);
-  return detailedTagArray.toDictionary ( 'key', 'value' ) ;
+  return detailedTagArray.toTypedRecords ( 'key', 'value' ) ;
 };
 
 
