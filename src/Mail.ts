@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 by IAdea Corporation, All Rights Reserved. */
+/* Copyright (C) 2024 by Rich Hsu, All Rights Reserved. */
 
 import * as NodeMailer from 'nodemailer';
 import * as Library from './Library';

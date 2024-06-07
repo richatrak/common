@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 by IAdea Corporation, All Rights Reserved. */
+/* Copyright (C) 2024 by Rich Hsu, All Rights Reserved. */
 
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosResponseHeaders } from 'axios';
 import { AnyType } from './extension/Extension.full';

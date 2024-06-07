@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 by IAdea Corporation, All Rights Reserved. */
+/* Copyright (C) 2024 by Rich Hsu, All Rights Reserved. */
 
 import * as express from 'express';
 import * as fs from 'fs-extra';

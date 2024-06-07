@@ -1,4 +1,4 @@
-/* Copyright (C) 2019 by IAdea Corporation, All Rights Reserved. */
+/* Copyright (C) 2024 by Rich Hsu, All Rights Reserved. */
 
 import './extension/Extension.full';
 import { AnyType, FreeRecords, Keys, OrNull, TypedRecords } from './extension/Extension.full';
