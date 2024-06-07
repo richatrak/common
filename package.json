@@ -66,5 +66,5 @@
   },
   "publishConfig": {
     "@richatrak:registry": "https://npm.pkg.github.com"
-  },
+  }
 }
