@@ -1,0 +1,21 @@
+{
+  "all": true,
+  "reporter": [
+    "text",
+    "text-summary",
+    "json-summary",
+    "html"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.REST.ts",
+    "**/*.test.ts",
+    "**/testReport/**",
+    "**/node_modules/**",
+    "src/launcher.ts"
+  ],
+  "temp-dir": "./test_report/temp",
+  "report-dir": "./test_report/coverageReport"
+}

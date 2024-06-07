@@ -1,0 +1,78 @@
+{
+  "name": "@richatrak/common",
+  "version": "1.0.0",
+  "description": "Common Typescript Library",
+  "homepage": "https://github.com/richatrak/common#readme",
+  "bugs": {
+    "url": "https://github.com/richatrak/common/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richatrak/common.git"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "author": "Rich Hsu <rich@rak.tw> (https://www.rich-hsu.com)",
+  "contributors": [
+    "Rich Hsu <rich@rak.tw> (https://www.rich-hsu.com)"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "---------- Prepare ( before prepublishOnly / npm install without arguments ) ----------": "",
+    "prepare": "npm update",
+    "---------- Publish ---------- (prepublishOnly - prepack - prepare - postpack - publish - postpublish)": "",
+    "prepublishOnly": "npm run lint && npm run build",
+    "postpublish": "rmdir /s /q lib",
+    "---------- Test and Build ----------": "",
+    "test": "npx jest --config jest-config.json",
+    "coverage": "npx nyc npm run test",
+    "build": "npx depcheck && tsc",
+    "check": "npm run lint && tsc --noEmit",
+    "---------- Version ----------": "",
+    "preversion": "npm run lint && npm run changelog && node gitCommitMsg.js && git add HISTORY.log",
+    "version": "npm run doc && git add -A apidoc && git add -A src && git add -A package-lock.json",
+    "postversion": "git push && git push --tags",
+    "---------- UTILITIES ----------": "",
+    "outdate": "npm outdated",
+    "quickRelease": "npm version patch && npm publish",
+    "lint": "npx eslint src/**/*.ts",
+    "doc": "npx apidoc -i src -o apidoc",
+    "changelog": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "===== Commit -> Version -> Build -> Publish =====": ""
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^8.2.0",
+    "nodemailer": "^6.9.3",
+    "rfc4648": "^1.5.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/fs-extra": "^11.0.1",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/nodemailer": "^6.4.8",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint-plugin-header": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "publishConfig": {
+    "@richatrak:registry": "https://npm.pkg.github.com"
+  },
+  "apidoc": {
+    "template": {
+      "forceLanguage": "en",
+      "showRequiredLabels": true,
+      "withGenerator": false
+    }
+  }
+}

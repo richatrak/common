@@ -1,0 +1,56 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true,
+        "jest": true,
+        "mongo":true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "header"
+    ],
+    "rules": {
+        "array-callback-return": "error",
+
+        "block-scoped-var":"error",
+
+        "dot-location":"error",
+        "dot-notation":"error",
+        "default-case": "error",
+
+        "curly": "error",
+        "eqeqeq": "error",
+
+        "no-eval": "error",
+        "no-magic-numbers": [ "error", {
+            "ignore": [-1, 0, 1],
+            "ignoreArrayIndexes": true
+        } ],
+
+
+        "no-alert":"error",
+        "no-var":"error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [ "error", {
+            "argsIgnorePattern": "^_" ,
+            "varsIgnorePattern": "^_",
+            "caughtErrorsIgnorePattern": "^_"
+        }],
+
+        "header/header": [2, "block", [" Copyright (C) 2024 by Rich Hsu, All Rights Reserved. "] , 1],
+
+
+        "prefer-const":"error",
+        "rest-spread-spacing":"error"
+    }
+}
